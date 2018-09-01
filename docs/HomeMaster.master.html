@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>HomeMaster.master.vr</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>HomeMaster.master.vr</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <hr />
+<h4><a href="https://github.com/ASNA/classic-dotnet-forms">Return to repo</a></h4>
+<p>This is the projects's startup program.</p>
+<h2><input action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" /></h2>
+<p>text here
+text here</p>
+<hr />
+<p>Project source members: </p>
+<ul>
+<li><a href="HomeMaster.master.html">HomeMaster.master.vr</a> </li>
+<li><a href="index.aspx.html">index.aspx.vr</a> </li>
+<li><a href="App_Code/Global.html">App_Code/Global.vr</a> </li>
+<li><a href="App_Code/OrderRepository.html">App_Code/OrderRepository.vr</a> </li>
+<li><a href="App_Code/WorkOrderList.html">App_Code/WorkOrderList.vr</a> </li>
+<li><a href="assets/js/rp.ajax.js.html">assets/js/rp.ajax.js</a> </li>
+<li><a href="assets/js/workorders.aspx.js.html">assets/js/workorders.aspx.js</a> </li>
+<li><a href="views/Index.aspx.html">views/Index.aspx.vr</a> </li>
+<li><a href="views/login.aspx.html">views/login.aspx.vr</a> </li>
+<li><a href="views/WorkOrders.aspx.html">views/WorkOrders.aspx.vr</a> </li>
+</ul>
+<hr />
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nx">Using</span> <span class="nx">System</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Data</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Configuration</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Collections</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Linq</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Web</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">Security</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">WebControls</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">WebControls</span><span class="p">.</span><span class="nx">WebParts</span>
+<span class="nx">Using</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">HtmlControls</span>
+
+<span class="nx">BegClass</span> <span class="nx">HomeMaster</span> <span class="nx">Partial</span><span class="p">(</span><span class="o">*</span><span class="nx">Yes</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> <span class="nx">Extends</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">MasterPage</span><span class="p">)</span>
+
+	<span class="nx">DclConst</span> <span class="nx">AntiXsrfTokenKey</span> <span class="nx">Value</span><span class="p">(</span><span class="s2">&quot;__AntiXsrfToken&quot;</span><span class="p">)</span>
+	<span class="nx">DclConst</span> <span class="nx">AntiXsrfUserNameKey</span> <span class="nx">Value</span><span class="p">(</span><span class="s2">&quot;__AntiXsrfUserName&quot;</span><span class="p">)</span>
+	<span class="nx">DclFld</span> <span class="nx">_antiXsrfTokenValue</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+
+	<span class="nx">DclProp</span> <span class="nx">ChildPage</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span>
+	
+	<span class="nx">DclFld</span> <span class="nx">_PageHeading</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> <span class="nx">Inz</span><span class="p">(</span><span class="s1">&#39;Default page heading&#39;</span><span class="p">)</span>
+	<span class="nx">BegProp</span> <span class="nx">PageHeading</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> 
+		<span class="nx">BegGet</span>
+			<span class="nx">LeaveSr</span> <span class="nx">_PageHeading</span>
+		<span class="nx">EndGet</span>
+		<span class="nx">BegSet</span>	
+			<span class="nx">_PageHeading</span> <span class="o">=</span> <span class="o">*</span><span class="nx">PropVal</span>
+		<span class="nx">EndSet</span>
+
+	<span class="nx">EndProp</span>
+	
+	<span class="nx">BegSr</span> <span class="nx">SetChildPage</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> 
+		<span class="nx">DclSrParm</span> <span class="nx">PageName</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+
+		<span class="nx">ChildPage</span> <span class="o">=</span> <span class="nx">PageName</span> 
+	<span class="nx">EndSr</span>
+
+	<span class="nx">BegSr</span> <span class="nx">SetPageHeading</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> 
+		<span class="nx">DclSrParm</span> <span class="nx">NewPageHeading</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+
+		<span class="nx">PageHeading</span> <span class="o">=</span> <span class="nx">NewPageHeading</span>
+	<span class="nx">EndSr</span>
+
+
+    <span class="nx">BegSr</span> <span class="nx">Page_Load</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span> <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Load</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">sender</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">e</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">EventArgs</span><span class="p">)</span>
+
+        <span class="nx">If</span> <span class="p">(</span><span class="nx">NOT</span> <span class="nx">IsPostBack</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Called the first time that the page is loaded.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="nx">Else</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Called subsequent times that the page is displayed.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="nx">EndIf</span>
+    <span class="nx">EndSr</span>
+
+	<span class="nx">BegSr</span> <span class="nx">Page_Init</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span>  <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Init</span><span class="p">)</span> 
+		<span class="nx">DclSrParm</span> <span class="nx">sender</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">e</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">EventArgs</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <pre><code>DclFld requestCookie Type(HttpCookie) 
+DclFld responseCookie Type(HttpCookie)
+
+requestCookie = Request.Cookies[AntiXsrfTokenKey]
+
+DclFld requestCookieGuidValue Type(System.Guid)
+
+       If (requestCookie &lt;&gt; *Nothing AND Guid.TryParse(requestCookie.Value, *ByRef requestCookieGuidValue))
+           // Use the Anti-XSRF token from the cookie
+           _antiXsrfTokenValue = requestCookie.Value
+           Page.ViewStateUserKey = _antiXsrfTokenValue
+    Else 
+           // Generate a new Anti-XSRF token and save to the cookie
+           _antiXsrfTokenValue = Guid.NewGuid().ToString("N")
+           Page.ViewStateUserKey = _antiXsrfTokenValue
+
+           responseCookie = *New HttpCookie(AntiXsrfTokenKey)
+        responseCookie.HttpOnly = *True
+        responseCookie.Value = _antiXsrfTokenValue
+
+           If (FormsAuthentication.RequireSSL AND Request.IsSecureConnection)
+               responseCookie.Secure = *True
+        EndIf
+
+        Response.Cookies.Set(responseCookie)
+    EndIf
+
+    AddHandler SourceObject(Page) +
+               SourceEvent(PreLoad) + 
+               HandlerObject(*This) +
+               HandlerSr(MasterPage_PreLoad)
+</code></pre>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">EndSr</span> 
+
+
+	<span class="nx">BegSr</span> <span class="nx">MasterPage_PreLoad</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span>  
+		<span class="nx">DclSrParm</span> <span class="nx">sender</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">e</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">EventArgs</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <pre><code>DclFld UserIdentity Type(*String)
+
+If Context.User.Identity.Name &lt;&gt; *Nothing
+    UserIdentity = Context.User.Identity.Name
+Else 
+    UserIdentity = String.Empty
+EndIf
+
+If (NOT IsPostBack)
+       // Set Anti-XSRF token
+       ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey
+    ViewState[AntiXsrfUserNameKey] = UserIdentity
+Else 
+    // Validate the Anti-XSRF token
+    If (ViewState[AntiXsrfTokenKey].ToString() &lt;&gt; _antiXsrfTokenValue) OR + 
+        (ViewState[AntiXsrfUserNameKey].ToString() &lt;&gt; UserIdentity)
+        Throw *New InvalidOperationException("Validation of Anti-XSRF token failed.")
+    EndIf
+EndIf
+</code></pre>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">EndSr</span> 
+	
+<span class="nx">EndClass</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

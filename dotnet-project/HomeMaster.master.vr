@@ -1,0 +1,147 @@
+﻿
+// ---
+// #### [Return to repo](https://github.com/ASNA/classic-dotnet-forms)
+// This is the projects's startup program.
+//
+// <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" />
+// ---
+// text here
+// text here
+// ---
+// Project source members: 
+//
+// *  [HomeMaster.master.vr](HomeMaster.master.html) 
+// *  [index.aspx.vr](index.aspx.html) 
+// *  [App_Code/Global.vr](App_Code/Global.html) 
+// *  [App_Code/OrderRepository.vr](App_Code/OrderRepository.html) 
+// *  [App_Code/WorkOrderList.vr](App_Code/WorkOrderList.html) 
+// *  [assets/js/rp.ajax.js](assets/js/rp.ajax.js.html) 
+// *  [assets/js/workorders.aspx.js](assets/js/workorders.aspx.js.html) 
+// *  [views/Index.aspx.vr](views/Index.aspx.html) 
+// *  [views/login.aspx.vr](views/login.aspx.html) 
+// *  [views/WorkOrders.aspx.vr](views/WorkOrders.aspx.html) 
+// ---
+
+Using System
+Using System.Data
+Using System.Configuration
+Using System.Collections
+Using System.Linq
+Using System.Web
+Using System.Web.Security
+Using System.Web.UI
+Using System.Web.UI.WebControls
+Using System.Web.UI.WebControls.WebParts
+Using System.Web.UI.HtmlControls
+
+BegClass HomeMaster Partial(*Yes) Access(*Public) Extends(System.Web.UI.MasterPage)
+
+	DclConst AntiXsrfTokenKey Value("__AntiXsrfToken")
+	DclConst AntiXsrfUserNameKey Value("__AntiXsrfUserName")
+	DclFld _antiXsrfTokenValue Type(*String) 
+
+	DclProp ChildPage Type(*String) Access(*Public)
+	
+	DclFld _PageHeading Type(*String) Inz('Default page heading')
+	BegProp PageHeading Type(*String) Access(*Public) 
+		BegGet
+			LeaveSr _PageHeading
+		EndGet
+		BegSet	
+			_PageHeading = *PropVal
+		EndSet
+
+	EndProp
+	
+	BegSr SetChildPage Access(*Public) 
+		DclSrParm PageName Type(*String) 
+
+		ChildPage = PageName 
+	EndSr
+
+	BegSr SetPageHeading Access(*Public) 
+		DclSrParm NewPageHeading Type(*String) 
+
+		PageHeading = NewPageHeading
+	EndSr
+
+
+    BegSr Page_Load Access(*Private) Event(*This.Load)
+        DclSrParm sender Type(*Object)
+        DclSrParm e Type(System.EventArgs)
+
+        If (NOT IsPostBack)
+            //
+            // Called the first time that the page is loaded.
+            //
+        Else
+            //
+            // Called subsequent times that the page is displayed.
+            //
+        EndIf
+    EndSr
+
+	BegSr Page_Init Access(*Private)  Event(*This.Init) 
+		DclSrParm sender Type(*Object)
+        DclSrParm e Type(System.EventArgs)
+//
+//		DclFld requestCookie Type(HttpCookie) 
+//		DclFld responseCookie Type(HttpCookie) 
+//
+//		requestCookie = Request.Cookies[AntiXsrfTokenKey]
+//
+//		DclFld requestCookieGuidValue Type(System.Guid) 
+//
+//            If (requestCookie <> *Nothing AND Guid.TryParse(requestCookie.Value, *ByRef requestCookieGuidValue))
+//                // Use the Anti-XSRF token from the cookie
+//                _antiXsrfTokenValue = requestCookie.Value
+//                Page.ViewStateUserKey = _antiXsrfTokenValue
+//			Else 
+//                // Generate a new Anti-XSRF token and save to the cookie
+//                _antiXsrfTokenValue = Guid.NewGuid().ToString("N")
+//                Page.ViewStateUserKey = _antiXsrfTokenValue
+//
+//                responseCookie = *New HttpCookie(AntiXsrfTokenKey)
+//				responseCookie.HttpOnly = *True
+//				responseCookie.Value = _antiXsrfTokenValue
+//
+//                If (FormsAuthentication.RequireSSL AND Request.IsSecureConnection)
+//                    responseCookie.Secure = *True
+//				EndIf
+//
+//				Response.Cookies.Set(responseCookie)
+//			EndIf
+//
+//			AddHandler SourceObject(Page) +
+//			           SourceEvent(PreLoad) + 
+//					   HandlerObject(*This) +
+//					   HandlerSr(MasterPage_PreLoad) 
+	EndSr 
+
+
+	BegSr MasterPage_PreLoad Access(*Private)  
+		DclSrParm sender Type(*Object)
+        DclSrParm e Type(System.EventArgs)
+
+//		DclFld UserIdentity Type(*String) 
+//
+//		If Context.User.Identity.Name <> *Nothing
+//			UserIdentity = Context.User.Identity.Name
+//		Else 
+//			UserIdentity = String.Empty
+//		EndIf
+//	
+//		If (NOT IsPostBack)
+//            // Set Anti-XSRF token
+//            ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey
+//			ViewState[AntiXsrfUserNameKey] = UserIdentity
+//		Else 
+//			// Validate the Anti-XSRF token
+//			If (ViewState[AntiXsrfTokenKey].ToString() <> _antiXsrfTokenValue) OR + 
+//				(ViewState[AntiXsrfUserNameKey].ToString() <> UserIdentity)
+//				Throw *New InvalidOperationException("Validation of Anti-XSRF token failed.")
+//			EndIf
+//		EndIf 
+	EndSr 
+	
+EndClass

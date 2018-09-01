@@ -1,0 +1,47 @@
+﻿
+// <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Repo home" />
+// <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Previous page" />
+// ---
+//
+// This is the projects's startup program.
+//
+// ---
+// text here
+// text here
+// ---
+// Annotated project members: 
+//
+// *  [HomeMaster.master.vr](HomeMaster.master.html) 
+// *  [index.aspx.vr](index.aspx.html) 
+// *  [App_Code/Global.vr](App_Code/Global.html) 
+// *  [App_Code/OrderRepository.vr](App_Code/OrderRepository.html) 
+// *  [App_Code/WorkOrderList.vr](App_Code/WorkOrderList.html) 
+// *  [assets/js/rp.ajax.js](assets/js/rp.ajax.html) 
+// *  [assets/js/workorders.aspx.js](assets/js/workorders.aspx.html) 
+// *  [views/Index.aspx.vr](views/Index.aspx.html) 
+// *  [views/login.aspx.vr](views/login.aspx.html) 
+// *  [views/WorkOrders.aspx.vr](views/WorkOrders.aspx.html) 
+// ---
+
+// Namespace declarations.
+Using System
+Using System.Data
+Using System.Configuration
+Using System.Collections
+Using System.Web
+Using System.Web.Security
+Using System.Web.UI
+Using System.Web.UI.WebControls
+Using System.Web.UI.WebControls.WebParts
+Using System.Web.UI.HtmlControls
+
+BegClass index Partial(*Yes) Access(*Public) Extends(System.Web.UI.Page)
+
+    BegSr Page_Load Access(*Private) Event(*This.Load)
+        DclSrParm sender Type(*Object)
+        DclSrParm e Type(System.EventArgs)
+
+		Response.Redirect('views/index.aspx') 
+    EndSr
+
+EndClass

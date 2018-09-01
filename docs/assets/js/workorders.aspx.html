@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>workorders.aspx.js</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>workorders.aspx.js</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>| url must be iistester/api/changestatus for deployed version! 
+| Something is up with IIS configuration!</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">changeStatus</span><span class="p">(</span><span class="nx">accountid</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">cmcustno</span><span class="o">:</span> <span class="nx">accountid</span><span class="p">,</span> <span class="nx">status</span><span class="o">:</span> <span class="nx">status</span> <span class="p">};</span>
+
+     <span class="o">*</span><span class="err">/</span>
+
+    <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/api/changestatus&#39;</span><span class="p">,</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+        <span class="nx">headers</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
+            <span class="s1">&#39;content-type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;x-requested-with&#39;</span><span class="o">:</span> <span class="s1">&#39;XMLHttpRequest&#39;</span>
+        <span class="p">}),</span>
+        <span class="nx">credentials</span><span class="o">:</span> <span class="s1">&#39;same-origin&#39;</span><span class="p">,</span>  <span class="c1">// You have no idea how important this is! </span>
+        <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">),</span>
+        <span class="nx">action</span><span class="o">:</span> <span class="nx">finishStatusChange</span>
+    <span class="p">};</span>
+
+    <span class="kd">let</span> <span class="nx">httpReq</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">ajax</span><span class="p">.</span><span class="nx">HTTPRequest</span><span class="p">();</span>
+    <span class="nx">httpReq</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kd">function</span> <span class="nx">finishStatusChange</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="nx">startTime</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">thumb</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="sb">`aside[data-accountid=&quot;</span><span class="si">${</span><span class="nx">json</span><span class="p">.</span><span class="nx">cmcustno</span><span class="si">}</span><span class="sb">&quot;]`</span><span class="p">);</span>
+    <span class="nx">thumb</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;data-status&#39;</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">newstatus</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">iconElement</span> <span class="o">=</span> <span class="nx">thumb</span><span class="p">.</span><span class="nx">firstElementChild</span><span class="p">.</span><span class="nx">firstElementChild</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">newstatus</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">iconElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;fa-thumbs-down&#39;</span><span class="p">,</span> <span class="s1">&#39;big-icon-red&#39;</span><span class="p">);</span>
+        <span class="nx">iconElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;fa-thumbs-up&#39;</span><span class="p">,</span> <span class="s1">&#39;big-icon-green&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">iconElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;fa-thumbs-up&#39;</span><span class="p">,</span> <span class="s1">&#39;big-icon-green&#39;</span><span class="p">);</span>
+        <span class="nx">iconElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;fa-thumbs-down&#39;</span><span class="p">,</span> <span class="s1">&#39;big-icon-red&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">thumb</span><span class="p">);</span>
+
+    <span class="kd">let</span> <span class="nx">elapsedMs</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">json</span><span class="p">.</span><span class="nx">__startTime</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Time to change status was </span><span class="si">${</span><span class="nx">elapsedMs</span><span class="si">}</span><span class="sb"> milliseconds.`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">thumbs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;.change-status&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">thumbs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">thumb</span> <span class="o">=</span> <span class="nx">thumbs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">parentElement</span><span class="p">;</span>
+    <span class="nx">thumb</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">status</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-status&#39;</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">accountid</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-accountid&#39;</span><span class="p">);</span>
+        <span class="nx">changeStatus</span><span class="p">(</span><span class="nx">accountid</span><span class="p">,</span> <span class="nx">status</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
