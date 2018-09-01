@@ -11,9 +11,6 @@ Using System.Web.UI.WebControls
 Using System.Web.UI.WebControls.WebParts
 Using System.Web.UI.HtmlControls
 
-/// <summary>
-/// Summary description for WorkOrderList
-/// </summary>
 BegClass OrderRepository Access(*Public)
 
     DclDB pgmDB DBName("*PUBLIC/DG NET Local")
@@ -27,11 +24,8 @@ BegClass OrderRepository Access(*Public)
           ImpOpen(*No) +
 		  AddRec(*Yes) 
    
+    // Class constructor. Receives an ASNA Database object reference.
     BegConstructor Access(*Public)
-        //
-        // Class constructor. Receives an ASNA Database object and
-        // the number of records to read.
-        //
         DclSrParm pgmDB     Type(ASNA.VisualRPG.Runtime.Database)
 
         *This.pgmDB = pgmDB

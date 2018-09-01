@@ -1,6 +1,4 @@
 ﻿
-// <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Repo home" />
-// <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Previous page" />
 // ---
 //
 // This is the projects's startup program.
@@ -10,6 +8,8 @@
 // text here
 // ---
 // Annotated project members
+// <input action="action" onclick="window.location.assign("https://github.com/ASNA/avr-ajax-webapp"); return false;" type="button" value="Repo home" />
+// <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Previous page" />
 //
 // *  [HomeMaster.master.vr](https://asna.github.io/avr-ajax-webapp/HomeMaster.master.html) 
 // *  [index.aspx.vr](https://asna.github.io/avr-ajax-webapp/index.aspx.html) 
