@@ -3,10 +3,9 @@
 function changeStatus(accountid, status) {
     let json = { cmcustno: accountid, status: status };
 
-    /*
-     | url must be iistester/api/changestatus for deployed version! 
-     | Something is up with IIS configuration!
-     */
+    
+    // When deploying, watch for IIS config 
+    // so 
 
     let options = {
         url: '/api/changestatus',
