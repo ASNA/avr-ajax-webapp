@@ -1,5 +1,5 @@
-// Annotated project members
-//
+Annotated project members
+
 // *  [HomeMaster.master.vr](https://asna.github.io/avr-ajax-webapp/HomeMaster.master.html) 
 // *  [index.aspx.vr](https://asna.github.io/avr-ajax-webapp/index.aspx.html) 
 // *  [App_Code/Global.vr](https://asna.github.io/avr-ajax-webapp/App_Code/Global.html) 
@@ -10,4 +10,3 @@
 // *  [views/Index.aspx.vr](https://asna.github.io/avr-ajax-webapp/views/Index.aspx.html) 
 // *  [views/login.aspx.vr](https://asna.github.io/avr-ajax-webapp/views/login.aspx.html) 
 // *  [views/WorkOrders.aspx.vr](https://asna.github.io/avr-ajax-webapp/views/WorkOrders.aspx.html) 
-// ---
