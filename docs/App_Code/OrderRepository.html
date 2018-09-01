@@ -44,7 +44,7 @@
           <span class="nx">File</span><span class="p">(</span><span class="s2">&quot;Examples/CMastNewL1&quot;</span><span class="p">)</span> <span class="o">+</span>
           <span class="nx">DB</span><span class="p">(</span><span class="nx">pgmDB</span><span class="p">)</span> <span class="o">+</span>
           <span class="nx">ImpOpen</span><span class="p">(</span><span class="o">*</span><span class="nx">No</span><span class="p">)</span> <span class="o">+</span>
-		  <span class="nx">AddRec</span><span class="p">(</span><span class="o">*</span><span class="nx">Yes</span><span class="p">)</span></pre></div>
+          <span class="nx">AddRec</span><span class="p">(</span><span class="o">*</span><span class="nx">Yes</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -73,28 +73,28 @@
         <span class="nx">Close</span> <span class="o">*</span><span class="nx">All</span>
     <span class="nx">EndSr</span> 
 
-	<span class="nx">BegFunc</span> <span class="nx">ToggleStatus</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Boolean</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> 
-		<span class="nx">DclSrParm</span> <span class="nx">CMCustNo</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer4</span><span class="p">)</span> 
-		<span class="nx">DclSrParm</span> <span class="nx">NewStatus</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="nx">BegFunc</span> <span class="nx">ToggleStatus</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Boolean</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> 
+        <span class="nx">DclSrParm</span> <span class="nx">CMCustNo</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer4</span><span class="p">)</span> 
+        <span class="nx">DclSrParm</span> <span class="nx">NewStatus</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
 
-		<span class="nx">DclFld</span> <span class="nx">Result</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Boolean</span><span class="p">)</span> 
+        <span class="nx">DclFld</span> <span class="nx">Result</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Boolean</span><span class="p">)</span> 
 
-		<span class="nx">OpenData</span><span class="p">()</span>
-		
-		<span class="nx">Customer_CMCustNo</span> <span class="o">=</span> <span class="nx">CMCustno</span> 
-		<span class="nx">Chain</span> <span class="nx">Customer</span> <span class="nx">Key</span><span class="p">(</span><span class="nx">Customer_CMCustNo</span><span class="p">)</span> 
-		<span class="nx">If</span> <span class="nx">Customer</span><span class="p">.</span><span class="nx">IsFound</span> 
-			<span class="nx">Customer_CMActive</span> <span class="o">=</span> <span class="nx">NewStatus</span>
-			<span class="nx">Update</span> <span class="nx">Customer</span> 
-			<span class="nx">Result</span> <span class="o">=</span> <span class="o">*</span><span class="nx">True</span> 
-		<span class="nx">Else</span> 
-			<span class="nx">Result</span> <span class="o">=</span> <span class="o">*</span><span class="nx">False</span>
-		<span class="nx">EndIf</span> 
+        <span class="nx">OpenData</span><span class="p">()</span>
+        
+        <span class="nx">Customer_CMCustNo</span> <span class="o">=</span> <span class="nx">CMCustno</span> 
+        <span class="nx">Chain</span> <span class="nx">Customer</span> <span class="nx">Key</span><span class="p">(</span><span class="nx">Customer_CMCustNo</span><span class="p">)</span> 
+        <span class="nx">If</span> <span class="nx">Customer</span><span class="p">.</span><span class="nx">IsFound</span> 
+            <span class="nx">Customer_CMActive</span> <span class="o">=</span> <span class="nx">NewStatus</span>
+            <span class="nx">Update</span> <span class="nx">Customer</span> 
+            <span class="nx">Result</span> <span class="o">=</span> <span class="o">*</span><span class="nx">True</span> 
+        <span class="nx">Else</span> 
+            <span class="nx">Result</span> <span class="o">=</span> <span class="o">*</span><span class="nx">False</span>
+        <span class="nx">EndIf</span> 
 
-		<span class="nx">CloseData</span><span class="p">()</span>
+        <span class="nx">CloseData</span><span class="p">()</span>
 
-		<span class="nx">LeaveSr</span> <span class="nx">Result</span>
-	<span class="nx">EndFunc</span> 
+        <span class="nx">LeaveSr</span> <span class="nx">Result</span>
+    <span class="nx">EndFunc</span> 
 
 <span class="nx">EndClass</span>
 

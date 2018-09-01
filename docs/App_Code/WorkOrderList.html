@@ -59,8 +59,8 @@
           
     <span class="nx">DclMemoryFile</span> <span class="nx">InfoList</span> <span class="nx">ImpOpen</span><span class="p">(</span><span class="o">*</span><span class="nx">Yes</span><span class="p">)</span> 
         <span class="nx">DclRecordFormat</span> <span class="nx">InfoListR</span>
-		<span class="nx">DclRecordFld</span>    <span class="nx">InfoList_Status</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
-		<span class="nx">DclRecordfld</span>    <span class="nx">InfoList_AccountID</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+        <span class="nx">DclRecordFld</span>    <span class="nx">InfoList_Status</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+        <span class="nx">DclRecordfld</span>    <span class="nx">InfoList_AccountID</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
         <span class="nx">DclRecordFld</span>    <span class="nx">InfoList_IconClass</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
         <span class="nx">DclRecordFld</span>    <span class="nx">InfoList_LineInfo</span>  <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Char</span><span class="p">)</span> <span class="nx">Len</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
         
@@ -102,7 +102,7 @@ the number of records to read.</p>
     <span class="nx">EndSr</span> 
 
     <span class="nx">BegFunc</span> <span class="nx">GetDataRows</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">DataTable</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> 
-		<span class="nx">OpenData</span><span class="p">()</span>
+        <span class="nx">OpenData</span><span class="p">()</span>
 
         <span class="nx">If</span> <span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">IsNullOrEmpty</span><span class="p">(</span><span class="nx">CustomerNumber</span><span class="p">))</span> <span class="nx">AND</span> <span class="o">+</span> 
            <span class="p">(</span><span class="nx">string</span><span class="p">.</span><span class="nx">IsNullOrEmpty</span><span class="p">(</span><span class="nx">CustomerName</span><span class="p">))</span>           
@@ -123,44 +123,44 @@ the number of records to read.</p>
     <span class="nx">BegFunc</span> <span class="nx">GetRows</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">DataTable</span><span class="p">)</span>
         <span class="nx">DclFld</span> <span class="nx">Row</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nx">Integer4</span><span class="p">)</span> 
 
-		<span class="nx">DclFld</span> <span class="nx">InfoTemplate</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">StringBuilder</span><span class="p">)</span> <span class="nx">New</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-		<span class="nx">DclFld</span> <span class="nx">RowTemplate</span>  <span class="nx">Type</span><span class="p">(</span><span class="nx">StringBuilder</span><span class="p">)</span> <span class="nx">New</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+        <span class="nx">DclFld</span> <span class="nx">InfoTemplate</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">StringBuilder</span><span class="p">)</span> <span class="nx">New</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+        <span class="nx">DclFld</span> <span class="nx">RowTemplate</span>  <span class="nx">Type</span><span class="p">(</span><span class="nx">StringBuilder</span><span class="p">)</span> <span class="nx">New</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
 
-		<span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{order-number}}&lt;br&gt;&#39;</span><span class="p">)</span>
-		<span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{customer-number}}-{{customer-name}}&lt;br&gt;&#39;</span><span class="p">)</span>
-		<span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{directions}}&lt;br&gt;&#39;</span><span class="p">)</span>
-		<span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{product}}&#39;</span><span class="p">)</span>
+        <span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{order-number}}&lt;br&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{customer-number}}-{{customer-name}}&lt;br&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{directions}}&lt;br&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s1">&#39;{{product}}&#39;</span><span class="p">)</span>
         
         <span class="nx">Do</span> <span class="nx">FromVal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="nx">ToVal</span><span class="p">(</span><span class="nx">PageSize</span><span class="p">)</span> <span class="nx">Index</span><span class="p">(</span><span class="nx">Row</span><span class="p">)</span> 
             <span class="nx">Read</span> <span class="nx">Customer</span> 
             <span class="nx">If</span> <span class="p">(</span><span class="nx">Customer</span><span class="p">.</span><span class="nx">IsEof</span><span class="p">)</span> 
                 <span class="nx">Leave</span>
             <span class="nx">EndIf</span>
-			
-			<span class="nx">infoList_IconClass</span> <span class="o">=</span> <span class="p">(</span><span class="nx">Customer_CMActive</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="o">+</span>
-			   <span class="s2">&quot;fas fa-thumbs-down big-icon-red&quot;</span> <span class="o">:</span> <span class="o">+</span>
-			   <span class="s2">&quot;fas fa-thumbs-up big-icon-green&quot;</span>
+            
+            <span class="nx">infoList_IconClass</span> <span class="o">=</span> <span class="p">(</span><span class="nx">Customer_CMActive</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="o">+</span>
+               <span class="s2">&quot;fas fa-thumbs-down big-icon-red&quot;</span> <span class="o">:</span> <span class="o">+</span>
+               <span class="s2">&quot;fas fa-thumbs-up big-icon-green&quot;</span>
 
-			<span class="nx">InfoList_AccountId</span> <span class="o">=</span> <span class="nx">Customer_CMCustNo</span><span class="p">.</span><span class="nx">ToString</span><span class="p">(</span><span class="s1">&#39;#########&#39;</span><span class="p">)</span>
-			<span class="nx">InfoList_Status</span> <span class="o">=</span> <span class="nx">Customer_CMActive</span> 
+            <span class="nx">InfoList_AccountId</span> <span class="o">=</span> <span class="nx">Customer_CMCustNo</span><span class="p">.</span><span class="nx">ToString</span><span class="p">(</span><span class="s1">&#39;#########&#39;</span><span class="p">)</span>
+            <span class="nx">InfoList_Status</span> <span class="o">=</span> <span class="nx">Customer_CMActive</span> 
 
-			<span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Clear</span><span class="p">()</span>
-			<span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">ToString</span><span class="p">())</span>
-		    <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{order-number}}&#39;</span><span class="p">,</span> <span class="s1">&#39;546-992378&#39;</span><span class="p">)</span>
-		    <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{customer-number}}&#39;</span><span class="p">,</span> <span class="nx">Customer_CMCustNo</span><span class="p">.</span><span class="nx">ToString</span><span class="p">(</span><span class="s2">&quot;00000000&quot;</span><span class="p">))</span>
-		    <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{customer-name}}&#39;</span><span class="p">,</span> <span class="nx">Customer_CMName</span><span class="p">.</span><span class="nx">Trim</span><span class="p">())</span>
-		    <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{directions}}&#39;</span><span class="p">,</span> <span class="s1">&#39;1450 West Field&#39;</span><span class="p">)</span>
-		    <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{product}}&#39;</span><span class="p">,</span> <span class="s1">&#39;Dry Run&#39;</span><span class="p">)</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Clear</span><span class="p">()</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">InfoTemplate</span><span class="p">.</span><span class="nx">ToString</span><span class="p">())</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{order-number}}&#39;</span><span class="p">,</span> <span class="s1">&#39;546-992378&#39;</span><span class="p">)</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{customer-number}}&#39;</span><span class="p">,</span> <span class="nx">Customer_CMCustNo</span><span class="p">.</span><span class="nx">ToString</span><span class="p">(</span><span class="s2">&quot;00000000&quot;</span><span class="p">))</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{customer-name}}&#39;</span><span class="p">,</span> <span class="nx">Customer_CMName</span><span class="p">.</span><span class="nx">Trim</span><span class="p">())</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{directions}}&#39;</span><span class="p">,</span> <span class="s1">&#39;1450 West Field&#39;</span><span class="p">)</span>
+            <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="s1">&#39;{{product}}&#39;</span><span class="p">,</span> <span class="s1">&#39;Dry Run&#39;</span><span class="p">)</span>
 
-			<span class="nx">InfoList_LineInfo</span> <span class="o">=</span> <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">ToString</span><span class="p">()</span> 
-			
+            <span class="nx">InfoList_LineInfo</span> <span class="o">=</span> <span class="nx">RowTemplate</span><span class="p">.</span><span class="nx">ToString</span><span class="p">()</span> 
+            
             <span class="nx">Write</span> <span class="nx">InfoList</span> 
         <span class="nx">EndDo</span>
 
         <span class="nx">CustomerNumber</span> <span class="o">=</span> <span class="nx">Customer_CMCustNo</span>
         <span class="nx">CustomerName</span> <span class="o">=</span> <span class="nx">Customer_CMName</span> 
 
-		<span class="nx">CloseData</span><span class="p">()</span>
+        <span class="nx">CloseData</span><span class="p">()</span>
         
         <span class="nx">LeaveSr</span> <span class="nx">InfoList</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">.</span><span class="nx">Tables</span><span class="p">[</span> <span class="mi">0</span> <span class="p">]</span>
     <span class="nx">EndFunc</span> 

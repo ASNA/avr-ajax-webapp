@@ -35,11 +35,11 @@
 
 <span class="nx">BegClass</span> <span class="nx">views_login</span> <span class="nx">Partial</span><span class="p">(</span><span class="o">*</span><span class="nx">Yes</span><span class="p">)</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Public</span><span class="p">)</span> <span class="nx">Extends</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Page</span><span class="p">)</span>
 
-	<span class="nx">DclDB</span> <span class="nx">DGDB</span> <span class="nx">DBName</span><span class="p">(</span><span class="s1">&#39;*Public/Cypress&#39;</span><span class="p">)</span> 
+    <span class="nx">DclDB</span> <span class="nx">DGDB</span> <span class="nx">DBName</span><span class="p">(</span><span class="s1">&#39;*Public/Cypress&#39;</span><span class="p">)</span> 
 
-	<span class="nx">BegFunc</span> <span class="nx">CheckWebUserCredentials</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Boolean</span><span class="p">)</span>
-		<span class="nx">DclSrParm</span> <span class="nx">User</span>     <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
-		<span class="nx">DclSrParm</span> <span class="nx">Password</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span></pre></div>
+    <span class="nx">BegFunc</span> <span class="nx">CheckWebUserCredentials</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Boolean</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">User</span>     <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+        <span class="nx">DclSrParm</span> <span class="nx">Password</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -53,13 +53,13 @@ Don't store passwords in plain text! Store only hashed, salted passwords
 in your data store. </p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre>		<span class="nx">LeaveSr</span> <span class="o">*</span><span class="nx">True</span> 
-	<span class="nx">EndFunc</span> 
+      <div class="highlight"><pre>        <span class="nx">LeaveSr</span> <span class="o">*</span><span class="nx">True</span> 
+    <span class="nx">EndFunc</span> 
 
 
-	<span class="nx">BegFunc</span> <span class="nx">CheckIBMiCredentials</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">ASNA</span><span class="p">.</span><span class="nx">DataGate</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">dgException</span><span class="p">)</span> 
-		<span class="nx">DclSrParm</span> <span class="nx">User</span>     <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
-		<span class="nx">DclSrParm</span> <span class="nx">Password</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span></pre></div>
+    <span class="nx">BegFunc</span> <span class="nx">CheckIBMiCredentials</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">ASNA</span><span class="p">.</span><span class="nx">DataGate</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">dgException</span><span class="p">)</span> 
+        <span class="nx">DclSrParm</span> <span class="nx">User</span>     <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span> 
+        <span class="nx">DclSrParm</span> <span class="nx">Password</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">String</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -70,38 +70,38 @@ in your data store. </p>
       </div>
       <p>Cache these values in the session object. When other pages need 
 to reconnect, these values are then available without prompting 
-for the duration of this session.           </p>
+for the duration of this session.             </p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre>		<span class="nx">Session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">User</span>
-		<span class="nx">Session</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">Password</span>
+      <div class="highlight"><pre>        <span class="nx">Session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">User</span>
+        <span class="nx">Session</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">Password</span>
 
-		<span class="nx">DGDB</span><span class="p">.</span><span class="nx">DBName</span> <span class="o">=</span> <span class="nx">Session</span><span class="p">[</span><span class="s1">&#39;dbname&#39;</span><span class="p">].</span><span class="nx">ToString</span><span class="p">()</span>
-		<span class="nx">DGDB</span><span class="p">.</span><span class="nx">User</span> <span class="o">=</span> <span class="nx">User</span>
-		<span class="nx">DGDB</span><span class="p">.</span><span class="nx">Password</span> <span class="o">=</span> <span class="nx">Password</span>
+        <span class="nx">DGDB</span><span class="p">.</span><span class="nx">DBName</span> <span class="o">=</span> <span class="nx">Session</span><span class="p">[</span><span class="s1">&#39;dbname&#39;</span><span class="p">].</span><span class="nx">ToString</span><span class="p">()</span>
+        <span class="nx">DGDB</span><span class="p">.</span><span class="nx">User</span> <span class="o">=</span> <span class="nx">User</span>
+        <span class="nx">DGDB</span><span class="p">.</span><span class="nx">Password</span> <span class="o">=</span> <span class="nx">Password</span>
 
-		<span class="nx">Try</span> 
-			<span class="nx">Connect</span> <span class="nx">DGDB</span> 
-		<span class="nx">Catch</span> <span class="nx">ex</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">ASNA</span><span class="p">.</span><span class="nx">DataGate</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">dgException</span><span class="p">)</span>
-			<span class="nx">LeaveSR</span> <span class="nx">ex</span> 
-		<span class="nx">Finally</span>
-			<span class="nx">Disconnect</span> <span class="nx">DGDB</span> 
-		<span class="nx">EndTry</span> 
+        <span class="nx">Try</span> 
+            <span class="nx">Connect</span> <span class="nx">DGDB</span> 
+        <span class="nx">Catch</span> <span class="nx">ex</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">ASNA</span><span class="p">.</span><span class="nx">DataGate</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">dgException</span><span class="p">)</span>
+            <span class="nx">LeaveSR</span> <span class="nx">ex</span> 
+        <span class="nx">Finally</span>
+            <span class="nx">Disconnect</span> <span class="nx">DGDB</span> 
+        <span class="nx">EndTry</span> 
 
-		<span class="nx">LeaveSr</span> <span class="o">*</span><span class="nx">Nothing</span> 
-	<span class="nx">EndFunc</span> 
+        <span class="nx">LeaveSr</span> <span class="o">*</span><span class="nx">Nothing</span> 
+    <span class="nx">EndFunc</span> 
 
     <span class="nx">BegSr</span> <span class="nx">Page_Load</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span> <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Load</span><span class="p">)</span>
         <span class="nx">DclSrParm</span> <span class="nx">sender</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
         <span class="nx">DclSrParm</span> <span class="nx">e</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">EventArgs</span><span class="p">)</span>
 
-		<span class="nx">DclFld</span> <span class="nx">CurrentMaster</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">HomeMaster</span><span class="p">)</span> 
+        <span class="nx">DclFld</span> <span class="nx">CurrentMaster</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">HomeMaster</span><span class="p">)</span> 
 
-		<span class="nx">Page</span><span class="p">.</span><span class="nx">Title</span> <span class="o">=</span> <span class="s1">&#39;Login&#39;</span>
+        <span class="nx">Page</span><span class="p">.</span><span class="nx">Title</span> <span class="o">=</span> <span class="s1">&#39;Login&#39;</span>
 
-		<span class="nx">CurrentMaster</span> <span class="o">=</span> <span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Master</span> <span class="o">*</span><span class="nx">As</span> <span class="nx">HomeMaster</span>
-		<span class="nx">CurrentMaster</span><span class="p">.</span><span class="nx">ChildPage</span> <span class="o">=</span> <span class="o">*</span><span class="nx">New</span> <span class="nx">FileInfo</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Url</span><span class="p">.</span><span class="nx">LocalPath</span><span class="p">).</span><span class="nx">Name</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">()</span>
-    	<span class="nx">CurrentMaster</span><span class="p">.</span><span class="nx">PageHeading</span> <span class="o">=</span> <span class="s1">&#39;Heartland Co-op&#39;</span>
+        <span class="nx">CurrentMaster</span> <span class="o">=</span> <span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Master</span> <span class="o">*</span><span class="nx">As</span> <span class="nx">HomeMaster</span>
+        <span class="nx">CurrentMaster</span><span class="p">.</span><span class="nx">ChildPage</span> <span class="o">=</span> <span class="o">*</span><span class="nx">New</span> <span class="nx">FileInfo</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Url</span><span class="p">.</span><span class="nx">LocalPath</span><span class="p">).</span><span class="nx">Name</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">()</span>
+        <span class="nx">CurrentMaster</span><span class="p">.</span><span class="nx">PageHeading</span> <span class="o">=</span> <span class="s1">&#39;Heartland Co-op&#39;</span>
 
     <span class="nx">EndSr</span>
 
@@ -122,9 +122,9 @@ for the duration of this session.           </p>
       <div class="highlight"><pre>    <span class="nx">EndSr</span>
 
 
-	<span class="nx">BegSr</span> <span class="nx">buttonlogin_Click</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span> <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">buttonlogin</span><span class="p">.</span><span class="nx">Click</span><span class="p">)</span>
-		<span class="nx">DclSrParm</span> <span class="nx">sender</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
-		<span class="nx">DclSrParm</span> <span class="nx">e</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">EventArgs</span><span class="p">)</span></pre></div>
+    <span class="nx">BegSr</span> <span class="nx">buttonlogin_Click</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span> <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">buttonlogin</span><span class="p">.</span><span class="nx">Click</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">sender</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">e</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">EventArgs</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -141,12 +141,12 @@ for the duration of this session.           </p>
     // shows many of the same user).
 
     If (CheckCredentials(user.text, password.text)
-        FormsAuthentication.RedirectFromLoginPage(user.Text, rememberme.Checked) 
-    EndIf
 </code></pre>
+<p>FormsAuthentication.RedirectFromLoginPage(user.Text, rememberme.Checked) 
+        EndIf</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre>		<span class="o">*</span><span class="err">/</span></pre></div>
+      <div class="highlight"><pre>        <span class="o">*</span><span class="err">/</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -159,13 +159,13 @@ for the duration of this session.           </p>
 Attempt DB connect with user credentials.</p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre>		<span class="nx">DclFld</span> <span class="nx">ex</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">ASNA</span><span class="p">.</span><span class="nx">DataGate</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">dgException</span><span class="p">)</span> 
+      <div class="highlight"><pre>        <span class="nx">DclFld</span> <span class="nx">ex</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">ASNA</span><span class="p">.</span><span class="nx">DataGate</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">dgException</span><span class="p">)</span> 
 
-		<span class="nx">ex</span> <span class="o">=</span> <span class="nx">CheckIBMiCredentials</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">password</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
-		<span class="nx">ex</span> <span class="o">=</span> <span class="o">*</span><span class="nx">Nothing</span> 
-		<span class="nx">If</span> <span class="nx">ex</span> <span class="o">=</span> <span class="o">*</span><span class="nx">Nothing</span> 
-			<span class="nx">FormsAuthentication</span><span class="p">.</span><span class="nx">RedirectFromLoginPage</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">rememberme</span><span class="p">.</span><span class="nx">Checked</span><span class="p">)</span> 
-		<span class="nx">Else</span></pre></div>
+        <span class="nx">ex</span> <span class="o">=</span> <span class="nx">CheckIBMiCredentials</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">password</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+        <span class="nx">ex</span> <span class="o">=</span> <span class="o">*</span><span class="nx">Nothing</span> 
+        <span class="nx">If</span> <span class="nx">ex</span> <span class="o">=</span> <span class="o">*</span><span class="nx">Nothing</span> 
+            <span class="nx">FormsAuthentication</span><span class="p">.</span><span class="nx">RedirectFromLoginPage</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="nx">rememberme</span><span class="p">.</span><span class="nx">Checked</span><span class="p">)</span> 
+        <span class="nx">Else</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -177,15 +177,15 @@ Attempt DB connect with user credentials.</p>
       <p>Show a detailed error message only if debug mode is on. </p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre>			<span class="nx">If</span> <span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Current</span><span class="p">.</span><span class="nx">IsDebuggingEnabled</span><span class="p">)</span>     
-				<span class="nx">loginFailedValidator</span><span class="p">.</span><span class="nx">ErrorMessage</span> <span class="o">=</span> <span class="nx">ex</span><span class="p">.</span><span class="nx">Message</span> 
-			<span class="nx">EndIf</span>
-		<span class="nx">EndIf</span>
-	<span class="nx">EndSr</span>
+      <div class="highlight"><pre>            <span class="nx">If</span> <span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Current</span><span class="p">.</span><span class="nx">IsDebuggingEnabled</span><span class="p">)</span>     
+                <span class="nx">loginFailedValidator</span><span class="p">.</span><span class="nx">ErrorMessage</span> <span class="o">=</span> <span class="nx">ex</span><span class="p">.</span><span class="nx">Message</span> 
+            <span class="nx">EndIf</span>
+        <span class="nx">EndIf</span>
+    <span class="nx">EndSr</span>
 
-	<span class="nx">BegSr</span> <span class="nx">loginFailedValidator_ServerValidate</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span> <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">loginFailedValidator</span><span class="p">.</span><span class="nx">ServerValidate</span><span class="p">)</span>
-		<span class="nx">DclSrParm</span> <span class="nx">source</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
-		<span class="nx">DclSrParm</span> <span class="nx">args</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">WebControls</span><span class="p">.</span><span class="nx">ServerValidateEventArgs</span><span class="p">)</span></pre></div>
+    <span class="nx">BegSr</span> <span class="nx">loginFailedValidator_ServerValidate</span> <span class="nx">Access</span><span class="p">(</span><span class="o">*</span><span class="nx">Private</span><span class="p">)</span> <span class="nx">Event</span><span class="p">(</span><span class="o">*</span><span class="nx">This</span><span class="p">.</span><span class="nx">loginFailedValidator</span><span class="p">.</span><span class="nx">ServerValidate</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">source</span> <span class="nx">Type</span><span class="p">(</span><span class="o">*</span><span class="nb">Object</span><span class="p">)</span>
+        <span class="nx">DclSrParm</span> <span class="nx">args</span> <span class="nx">Type</span><span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">WebControls</span><span class="p">.</span><span class="nx">ServerValidateEventArgs</span><span class="p">)</span></pre></div>
     </div>
   </div>
   <div class='clearall'></div>
@@ -199,8 +199,8 @@ failed. In this case, if control gets here the page wasn't redirect with the
 FormsAuthentication class which means there is an error. </p>
     </div>
     <div class='code'>
-      <div class="highlight"><pre>		<span class="nx">args</span><span class="p">.</span><span class="nx">IsValid</span> <span class="o">=</span> <span class="o">*</span><span class="nx">False</span> 				
-	<span class="nx">EndSr</span>
+      <div class="highlight"><pre>        <span class="nx">args</span><span class="p">.</span><span class="nx">IsValid</span> <span class="o">=</span> <span class="o">*</span><span class="nx">False</span>                 
+    <span class="nx">EndSr</span>
 
 <span class="nx">EndClass</span>
 

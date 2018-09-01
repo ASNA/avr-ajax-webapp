@@ -1,10 +1,9 @@
 ﻿
-// ---
 // <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Back to members list" />
+// ---
 //
 // Brief description
 //
-// ---
 // text here
 // text here..
 // ---
