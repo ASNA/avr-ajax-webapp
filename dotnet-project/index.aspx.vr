@@ -2,7 +2,7 @@
 // ---
 // <input action="action" onclick="window.history.go(-1); return false;" type="button" value="Back to members list" />
 //
-// This is the projects's startup program.
+// Brief description
 //
 // ---
 // text here
