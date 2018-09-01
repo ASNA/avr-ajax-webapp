@@ -17,18 +17,26 @@
       <div class='octowrap'>
         <a class='octothorpe' href='#section-0'>#</a>
       </div>
-      <p>| url must be iistester/api/changestatus for deployed version! 
-| Something is up with IIS configuration!</p>
+      
     </div>
     <div class='code'>
       <div class="highlight"><pre><span></span><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="kd">function</span> <span class="nx">changeStatus</span><span class="p">(</span><span class="nx">accountid</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">cmcustno</span><span class="o">:</span> <span class="nx">accountid</span><span class="p">,</span> <span class="nx">status</span><span class="o">:</span> <span class="nx">status</span> <span class="p">};</span>
-
-     <span class="o">*</span><span class="err">/</span>
-
-    <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">cmcustno</span><span class="o">:</span> <span class="nx">accountid</span><span class="p">,</span> <span class="nx">status</span><span class="o">:</span> <span class="nx">status</span> <span class="p">};</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>When deploying, watch for IIS config 
+so </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
         <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/api/changestatus&#39;</span><span class="p">,</span>
         <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
         <span class="nx">headers</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span>
